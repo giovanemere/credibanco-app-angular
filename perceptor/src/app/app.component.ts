@@ -1,9 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
-
-import { DatePipe } from '@angular/common';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-root',
@@ -19,88 +16,56 @@ export class AppComponent implements OnInit {
   chosenFile: any;
   viewMode = 'deshabilitado';
   today = new Date();
+  fechaFormateada:string = '';
 
 
-  public serverUrl: string = 'http://192.168.137.5:8091/devops/jenkins/job/FOLDER_OPSDEV/job/SCCOLCOMUNES/job/OPTIMIZACION/job/FREE_STYLE/job/TRIGGER_MACROS/buildWithParameters';
 
   constructor(
-    public http: HttpClient,
     private fb: UntypedFormBuilder
   ) { }
 
-  peticion() {
-    // this.login().subscribe(res => (
-    //   console.log('peticion')
-    // ), (error:any) => (console.log(error)));
-  }
-
-  login(): Observable<any> {
-    console.log('entro al login');
-
-    let authorizationData = 'Basic ' + this.b64EncodeUnicode('giovanemere' + ':' + '11a78018ef44bdc4ebcce077bbcefa36eb');
-
-    const uploadData = new FormData();
-
-      uploadData.append('nameFile', this.chosenFileName);
-      uploadData.append('attachedfile', this.chosenFile);
-
-    const headerOptions = {
-
-      headers: new HttpHeaders({
-        'Authorization': authorizationData,
-      })
-
-    };
-
-    return this.http.post(this.serverUrl, uploadData, headerOptions);
-
-  }
-  b64EncodeUnicode(str: string): string {
-    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => {
-      return String.fromCharCode(('0x' + p1) as any);
-    }));
-  }
+ 
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nombre: [''],
-      email: [''],
-      nombreResponsable: [localStorage.getItem('UserName')],
-      vicepresidencia: [''],
-      estado: ['Activo'],
-      archivo: ['']
+      email: ['', Validators.required, Validators.email],
+      nombreResponsable: ['', Validators.required],
+      vicepresidencia: ['', Validators.required],
     });
+
+
+    // Obtenemos los componentes de la fecha
+    const dia = this.today.getDate();
+    const mes = this.today.getMonth() + 1; // Los meses son indexados desde 0, por lo que sumamos 1
+    const año = this.today.getFullYear();
+    const hora = this.today.getHours();
+    const minutos = this.today.getMinutes();
+    const segundos = this.today.getSeconds();
+
+    // Formateamos la fecha y hora como una cadena de texto
+    this.fechaFormateada = `${dia}/${mes}/${año} ${hora}:${minutos}:${segundos}`;
+
   }
 
-  onChange(fileInput: Event) {
-    const control: any = fileInput.target;
-    console.log(fileInput);
+  procesar(){
 
+    if(this.form.invalid){
+      Swal.fire({
+        icon:'error',
+        text: 'Faltan campos obligatorios por llenar o estan mal diligenciados'
+      })
+    }else{
+      const nombre = this.form.controls['nombreResponsable'].value
+      const email = this.form.controls['email'].value
+      const vicepresidencia = this.form.controls['vicepresidencia'].value
 
-    if (!control.files || control.length === 0) {
-      this.chosenFileName = null;
-      this.chosenFile = null;
-    } else {
-      this.chosenFileName = control.files[0].name;
-      this.chosenFile = control.files[0];
-      console.log('archivo cargado');
+      Swal.fire({
+        icon:'success',
+        title: 'La información ingresada es: ',
+        html: '<div> Nombre: '+nombre +'</div> <br> <div> Email: '+ email+'</div> <br> <div> Vice presidencia: '+ vicepresidencia+'</div>',
+        confirmButtonText: 'Cerrar'
+      })
     }
-    this.viewMode = 'habilitado';
   }
-
-  onUploadMacro() {
-
-    this.form.get('nombre')?.setValue(this.chosenFileName);
-
-    if (this.chosenFile != undefined) {
-
-        this.login().subscribe((response) => {
-      }
-      );
-    } else {
-      console.log(this.chosenFile);
-    }
-  }
-
 
 }

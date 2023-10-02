@@ -1,55 +1,99 @@
-<form [formGroup]="form">
+
 
   <div class="col-md-12">
+    
+      <div class="row">
+        <div class="col-4">
+          <img src="../assets/img/logo.jpg" alt="">
+        </div>
+      </div>
+      
+
+      <div class="row">
+        <div class="col-4"></div>
+
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Bienvenidos al portal de Credibanco</div>
+              <div class="card-title"> 
+                <p>
+                  Fecha de ingreso al portal {{ fechaFormateada}}
+                </p>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4"></div>
+
+      </div>
+
+      <br>
+      <br>
+     
+
+    <form [formGroup]="form">
     <div class="row">
-      <div class="col-4">
+
+      <div class="col-2"></div>
+
+
+      <div class="col-8">
+
+        
+
         <div class="card">
           <div class="card-body">
-            <div class="card-title">Bienvenidos al portal de Credibanco</div>
-            <div class="card-title"> 
-              <p>
-                Today is {{ today }}
-              </p>
-             </div>
+
+            <div style="text-align: center;font-size: 25px;font-weight: 500;">Formulario</div>
+            <br>
+
+            <div class="row" style="text-align: center;">
+
+              <div class="col-4">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-label>Nombre completo</mat-label>
+                    <input matInput placeholder="Pedro" formControlName="nombreResponsable" required>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-label>Ingrese email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              
+              <div class="col-4">
+                <mat-form-field>
+                  <mat-label>Vice presidencia</mat-label>
+                  <mat-select formControlName="vicepresidencia">
+                    <mat-option value="VP_AML">VP_AML</mat-option> 
+                    <mat-option value="VP_AUDITORIA">VP_AUDITORIA</mat-option>
+                    <mat-option value="VP_DIGITAL">VP_DIGITAL</mat-option>
+                    <mat-option value="VP_FINANCIERA">VP_FINANCIERA</mat-option>
+                    <mat-option value="VP_OPERACIONES">VP_OPERACIONES</mat-option>
+                    <mat-option value="VP_RETAIL">VP_RETAIL</mat-option>
+                    <mat-option value="VP_RIESGOS">VP_RIESGOS</mat-option>
+                    <mat-option value="VP_SEGMENTOS">VP_SEGMENTOS</mat-option>
+                    <mat-option value="VP_TECNOLOGIA">VP_TECNOLOGIA</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>  
+            <div style="text-align: end; margin-right: 4%;">
+              <button mat-raised-button color="primary" (click)="procesar()">Procesar</button>
+            </div> 
+            <br>
           </div>
         </div>
       </div>
-
-
-      <div class="col-2">
-
-        <div class="card" style="height: 250px;">
-          <div class="card-body">
-            <p>E-mail</p>
-            <input type="text" formControlName="email" style="margin-top: 3px;margin-left: 10px;"
-              class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-            <p>Nombre del responsable</p>
-            <input type="text" formControlName="nombreResponsable" style="margin-top: 3px;margin-left: 10px;"
-              class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-            <p>Vice presidencia</p>
-            <select class="form-control" formControlName="vicepresidencia" style="margin-top: 3px;margin-left: 10px;"
-              class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-              <option>VP_AML</option>
-              <option>VP_AUDITORIA</option>
-              <option>VP_DIGITAL</option>
-              <option>VP_FINANCIERA</option>
-              <option>VP_OPERACIONES</option>
-              <option>VP_RETAIL</option>
-              <option>VP_RIESGOS</option>
-              <option>VP_SEGMENTOS</option>
-              <option>VP_TECNOLOGIA</option>
-              <option>VP_WEALTH</option>
-              <option>VP_WHOLESALE</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-6">
-      </div>
+      <div class="col-2"></div>     
     </div>
+  </form>
   </div>
-  <br>
-  <br>
-</form>
