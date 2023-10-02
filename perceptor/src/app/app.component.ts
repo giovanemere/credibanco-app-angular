@@ -12,9 +12,6 @@ import Swal from 'sweetalert2'
 export class AppComponent implements OnInit {
 
   form!: UntypedFormGroup;
-  chosenFileName: any;
-  chosenFile: any;
-  viewMode = 'deshabilitado';
   today = new Date();
   fechaFormateada:string = '';
 
