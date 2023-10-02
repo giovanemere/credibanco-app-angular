@@ -1,9 +1,5 @@
 #/bin/bash
 
-#git config --global user.name "Edisson Zuniga"
-#git config --global user.email "edisson.zuniga@scotiabankcolpatria.com"
-#git config --list
-
 git config --global core.autocrlf false
 
 clear
