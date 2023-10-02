@@ -1,12 +1,10 @@
 #/bin/bash
-
+clear
 git config --global core.autocrlf false
 
-clear
-
 # set variables
-comment="${1}"
-rama="${2}"
+    comment="${1}"
+    rama="${2}"
 
 #Ayuda de Shell tagCreate
 if [[ -z "$comment" || -z "$rama" ]]; # Si no se envia carpeta de repositorio de la aplicacion
