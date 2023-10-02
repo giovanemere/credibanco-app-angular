@@ -1,8 +1,9 @@
 #/bin/bash
 clear
-git config --global core.autocrlf false
+# set variables Git
+    git config --global core.autocrlf false
 
-# set variables
+# set variables Shell
     comment="${1}"
     rama="${2}"
 
@@ -16,11 +17,6 @@ if [[ -z "$comment" || -z "$rama" ]]; # Si no se envia carpeta de repositorio de
     else
 
         # Ejecucion
-
-        #cd /home/giovanemere/Aprovisionamiento_Linux
-        #git clone https://$username:$token@github.com/$repo
-        #git clone https://@github.com/$repo
-
         git status
         read -p "Press [Enter] key to continue..." readEnterKey
 
