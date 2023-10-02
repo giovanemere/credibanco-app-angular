@@ -1,16 +1,11 @@
 #/bin/bash
-
-#git config --global user.name "Edisson Zuniga"
-#git config --global user.email "edisson.zuniga@scotiabankcolpatria.com"
-#git config --list
-
-git config --global core.autocrlf false
-
 clear
+# set variables Git
+    git config --global core.autocrlf false
 
-# set variables
-comment="${1}"
-rama="${2}"
+# set variables Shell
+    comment="${1}"
+    rama="${2}"
 
 #Ayuda de Shell tagCreate
 if [[ -z "$comment" || -z "$rama" ]]; # Si no se envia carpeta de repositorio de la aplicacion
@@ -22,33 +17,31 @@ if [[ -z "$comment" || -z "$rama" ]]; # Si no se envia carpeta de repositorio de
     else
 
         # Ejecucion
-
-        #cd /home/giovanemere/Aprovisionamiento_Linux
-        #git clone https://$username:$token@github.com/$repo
-        #git clone https://@github.com/$repo
-
+        echo "----------------------------------------------------"
         git status
+
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
         echo "----------------------------------------------------"
         echo "git add ."
-        echo "----------------------------------------------------"
         git add .
-
+        
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
         echo "----------------------------------------------------"
         echo "git commit -m \"$comment\""
-        echo "----------------------------------------------------"
         git commit -m "$comment"
 
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
         echo "----------------------------------------------------"
         echo "git push origin $rama"
-        echo "----------------------------------------------------"
         git push origin $rama
 
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
 fi
