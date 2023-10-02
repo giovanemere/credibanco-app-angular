@@ -17,28 +17,31 @@ if [[ -z "$comment" || -z "$rama" ]]; # Si no se envia carpeta de repositorio de
     else
 
         # Ejecucion
+        echo "----------------------------------------------------"
         git status
+
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
         echo "----------------------------------------------------"
         echo "git add ."
-        echo "----------------------------------------------------"
         git add .
-
+        
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
         echo "----------------------------------------------------"
         echo "git commit -m \"$comment\""
-        echo "----------------------------------------------------"
         git commit -m "$comment"
 
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
         echo "----------------------------------------------------"
         echo "git push origin $rama"
-        echo "----------------------------------------------------"
         git push origin $rama
 
+        echo "----------------------------------------------------"
         read -p "Press [Enter] key to continue..." readEnterKey
 
 fi
