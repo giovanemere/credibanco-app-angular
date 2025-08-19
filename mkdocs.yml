@@ -1,0 +1,17 @@
+site_name: 'Credibanco App Angular'
+site_description: 'Aplicación Angular moderna para Credibanco'
+
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - API: api.md
+  - Deployment: deployment.md
+
+plugins:
+  - techdocs-core
+
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: blue

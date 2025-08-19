@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: credibanco-app-angular
+  title: Credibanco App Angular
+  description: Aplicación Angular moderna para Credibanco
+  annotations:
+    github.com/project-slug: giovanemere/credibanco-app-angular
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - angular
+    - frontend
+    - spa
+    - credibanco
+spec:
+  type: website
+  lifecycle: production
+  owner: platform-team
+  system: credibanco
